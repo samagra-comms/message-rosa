@@ -1,7 +1,8 @@
-name: Build
+name: Build & Deploy on Tag
 on:
   push:
-    branches: [main, master, ghworkflow]
+    tags:
+      - 'v*.*.*'
 jobs:
   build:
     name: Build
@@ -15,12 +16,6 @@ jobs:
         with:
           java-version: 11
           distribution: 'temurin'
-      - name: Cache SonarCloud packages
-        uses: actions/cache@v1
-        with:
-          path: ~/.sonar/cache
-          key: ${{ runner.os }}-sonar
-          restore-keys: ${{ runner.os }}-sonar
       - name: Cache Maven packages
         uses: actions/cache@v1
         with:
@@ -52,6 +47,13 @@ jobs:
           path: ~/.m2/repository
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2-
+
+      # - name: Delete previous build if present
+      #   uses: actions/delete-package-versions@v3
+      #   with: 
+      #     min-versions-to-keep: 0
+      #     package-name: 'com.uci.message-rosa'
+      #     token: ${{ secrets.TOKEN }}
 
       - name: Deploy
         run: mvn clean -DskipTests -Pgithub deploy
