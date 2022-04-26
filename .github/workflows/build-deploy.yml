@@ -1,8 +1,11 @@
-name: Build & Deploy on Tag
+name: Build & Deploy on Tag & Push
 on:
   push:
     tags:
       - 'v*.*.*'
+    branches: 
+      - '*'
+      
 jobs:
   build:
     name: Build
