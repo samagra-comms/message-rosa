@@ -8,7 +8,7 @@ on:
       
 jobs:
   build-deploy-github:
-    name: Deploy to GitHub
+    name: Build & Deploy to GitHub
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -38,7 +38,7 @@ jobs:
           token: ${{ secrets.TOKEN }}
 
       - name: Deploy
-        run: mvn clean install -DskipTests -Pgithub deploy
+        run: mvn clean install -Pgithub deploy -DskipTests
         env:
           GITHUB_USERNAME: ${{ secrets.USERNAME }}
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
