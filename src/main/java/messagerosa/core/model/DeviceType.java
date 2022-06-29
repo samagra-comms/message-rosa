@@ -3,7 +3,8 @@ package messagerosa.core.model;
 public enum DeviceType {
     PHONE("phone"),
     FCM("fcm"),
-    PHONE_PWA("ucipwa");
+    PHONE_PWA("ucipwa"),
+    PHONE_FCM("phonefcm");
     
 
     private String name;
