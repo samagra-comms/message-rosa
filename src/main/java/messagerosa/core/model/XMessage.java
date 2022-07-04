@@ -50,7 +50,7 @@ public class XMessage implements Serializable {
 
 	private String ownerOrgId;
 
-	private UUID ownerId;
+	private String ownerId;
 
 	//Persist
 	private String app;
