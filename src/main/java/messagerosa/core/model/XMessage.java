@@ -5,6 +5,7 @@ import java.io.StringWriter;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -44,6 +45,12 @@ public class XMessage implements Serializable {
 		HSM_WITH_BUTTON,
 		BROADCAST_TEXT
 	}
+
+	private UUID sessionId;
+
+	private String ownerOrgId;
+
+	private String ownerId;
 
 	//Persist
 	private String app;
