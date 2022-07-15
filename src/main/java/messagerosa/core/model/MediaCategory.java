@@ -5,7 +5,12 @@ public enum MediaCategory {
 	AUDIO("audio"),
 	VIDEO("video"),
 	VOICE("voice"),
-	FILE("file");
+    IMAGE_URL("image_url"),
+    AUDIO_URL("audio_url"),
+    VIDEO_URL("video_url"),
+    VOICE_URL("voice_url"),
+	FILE("file"),
+    FILE_URL("file_url");
 
     private String name;
 
