@@ -52,6 +52,8 @@ public class XMessage implements Serializable {
 
 	private String ownerId;
 
+	private UUID botId;
+
 	//Persist
 	private String app;
 
