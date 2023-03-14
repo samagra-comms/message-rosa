@@ -23,4 +23,6 @@ public class XMessagePayload {
 	private String flow;
 	private Integer questionIndex;
 	private String mediaCaption;
+	private String title;
+	private ArrayList<Data> data;
 }
