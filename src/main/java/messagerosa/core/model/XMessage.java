@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.io.StringWriter;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -80,6 +81,8 @@ public class XMessage implements Serializable {
 	//Persist
 	@NotNull
 	private Long timestamp;
+
+	private List<String> tags;
 
 	private String userState;
 	private String encryptionProtocol;
