@@ -6,7 +6,8 @@ public enum StylingTag {
 	IMAGE("image"),
 	AUDIO("audio"),
 	VIDEO("video"),
-	DOCUMENT("document");
+	FILE("file"),
+	TEXT("text");
 
 	private String name;
 
