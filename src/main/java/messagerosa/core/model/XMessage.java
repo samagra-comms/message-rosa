@@ -4,13 +4,12 @@ import java.io.Serializable;
 import java.io.StringWriter;
 import java.time.Instant;
 import java.util.ArrayList;
-import java.util.Map;
 import java.util.UUID;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Marshaller;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
 import com.sun.istack.NotNull;
 

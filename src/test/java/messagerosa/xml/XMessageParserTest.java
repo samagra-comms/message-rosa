@@ -3,7 +3,7 @@ package messagerosa.xml;
 import messagerosa.core.model.XMessage;
 import org.junit.jupiter.api.Test;
 
-import javax.xml.bind.JAXBException;
+import jakarta.xml.bind.JAXBException;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;

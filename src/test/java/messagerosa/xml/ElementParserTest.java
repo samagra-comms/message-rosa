@@ -1,24 +1,18 @@
 package messagerosa.xml;
 
 import messagerosa.core.model.XMessage;
-import messagerosa.xml.exception.InvalidStructureException;
 import org.junit.Before;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.kxml2.io.KXmlParser;
-import org.xmlpull.v1.XmlPullParserException;
 
-import javax.xml.bind.JAXBException;
+import jakarta.xml.bind.JAXBException;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 
 import static junit.framework.TestCase.assertEquals;
 import static messagerosa.utils.ResourcePathHelper.r;
-import static org.junit.jupiter.api.Assertions.*;
 
 class ElementParserTest {
 
