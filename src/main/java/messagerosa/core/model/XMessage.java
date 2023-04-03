@@ -15,11 +15,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import com.sun.istack.NotNull;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
@@ -27,6 +23,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @XmlRootElement
+@ToString
 public class XMessage implements Serializable {
 	public enum MessageState {
 		NOT_SENT,

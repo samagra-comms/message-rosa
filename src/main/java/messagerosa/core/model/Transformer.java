@@ -9,6 +9,7 @@ import java.util.HashMap;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class Transformer {
     private String id;
     private HashMap<String, String> metaData;
