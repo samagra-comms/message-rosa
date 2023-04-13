@@ -89,9 +89,9 @@ public class XMessage implements Serializable {
 	private String lastMessageID;
 
 	private ConversationStage conversationStage;
-	
+
 	private ArrayList<Integer> conversationLevel;
-	
+
 	@NotNull
 	private ArrayList<Transformer> transformers; // -1 no transfer like ms3 transforms msg to next msg
 
@@ -104,8 +104,8 @@ public class XMessage implements Serializable {
 	static {
 		try {
 			context = JAXBContext.newInstance(XMessage.class);
-			marshaller = context.createMarshaller();
-			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+//			marshaller = context.createMarshaller();
+//			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 		} catch (JAXBException e) {
 			e.printStackTrace();
 		}
@@ -114,6 +114,12 @@ public class XMessage implements Serializable {
 
 	public String toXML() throws JAXBException {
 		StringWriter stringWriter = new StringWriter();
+		/** Marshaller object created here because of it is not thread safe.
+		 * So that we are getting exceptions like NullPointer, ArrayOutOfBounds,
+		 * EmptyStack Exception.
+		 */
+		marshaller = context.createMarshaller();
+		marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 		marshaller.marshal(this, stringWriter);
 		return stringWriter.toString();
 	}
