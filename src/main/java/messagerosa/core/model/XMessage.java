@@ -99,7 +99,6 @@ public class XMessage implements Serializable {
 	private XMessagePayload payload;
 
 	private static JAXBContext context;
-	private static Marshaller marshaller;
 
 	static {
 		try {
@@ -118,7 +117,7 @@ public class XMessage implements Serializable {
 		 * So that we are getting exceptions like NullPointer, ArrayOutOfBounds,
 		 * EmptyStack Exception.
 		 */
-		marshaller = context.createMarshaller();
+		Marshaller marshaller = context.createMarshaller();
 		marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 		marshaller.marshal(this, stringWriter);
 		return stringWriter.toString();
