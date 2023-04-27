@@ -15,11 +15,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import com.sun.istack.NotNull;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
@@ -27,6 +23,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @XmlRootElement
+@ToString
 public class XMessage implements Serializable {
 	public enum MessageState {
 		NOT_SENT,
@@ -92,9 +89,9 @@ public class XMessage implements Serializable {
 	private String lastMessageID;
 
 	private ConversationStage conversationStage;
-	
+
 	private ArrayList<Integer> conversationLevel;
-	
+
 	@NotNull
 	private ArrayList<Transformer> transformers; // -1 no transfer like ms3 transforms msg to next msg
 
@@ -102,13 +99,12 @@ public class XMessage implements Serializable {
 	private XMessagePayload payload;
 
 	private static JAXBContext context;
-	private static Marshaller marshaller;
 
 	static {
 		try {
 			context = JAXBContext.newInstance(XMessage.class);
-			marshaller = context.createMarshaller();
-			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+//			marshaller = context.createMarshaller();
+//			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 		} catch (JAXBException e) {
 			e.printStackTrace();
 		}
@@ -117,6 +113,12 @@ public class XMessage implements Serializable {
 
 	public String toXML() throws JAXBException {
 		StringWriter stringWriter = new StringWriter();
+		/** Marshaller object created here because of it is not thread safe.
+		 * So that we are getting exceptions like NullPointer, ArrayOutOfBounds,
+		 * EmptyStack Exception.
+		 */
+		Marshaller marshaller = context.createMarshaller();
+		marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 		marshaller.marshal(this, stringWriter);
 		return stringWriter.toString();
 	}

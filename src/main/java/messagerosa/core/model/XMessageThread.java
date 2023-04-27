@@ -9,6 +9,7 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class XMessageThread {
     private int offset; // normal form or simple chat..
     @NotNull
