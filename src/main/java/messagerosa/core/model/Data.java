@@ -1,5 +1,6 @@
 package messagerosa.core.model;
 
+
 import lombok.*;
 
 @Getter
@@ -7,8 +8,7 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ButtonChoice {
+public class Data {
     private String key;
-    private String text;
-    private Boolean backmenu;
+    private String value;
 }

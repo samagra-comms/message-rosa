@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.io.StringWriter;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -44,6 +47,14 @@ public class XMessage implements Serializable {
 		BROADCAST_TEXT
 	}
 
+	private UUID sessionId;
+
+	private String ownerOrgId;
+
+	private String ownerId;
+
+	private UUID botId;
+
 	//Persist
 	private String app;
 
@@ -71,6 +82,8 @@ public class XMessage implements Serializable {
 	@NotNull
 	private Long timestamp;
 
+	private List<String> tags;
+
 	private String userState;
 	private String encryptionProtocol;
 
@@ -79,6 +92,8 @@ public class XMessage implements Serializable {
 	private String lastMessageID;
 
 	private ConversationStage conversationStage;
+	
+	private ArrayList<Integer> conversationLevel;
 	
 	@NotNull
 	private ArrayList<Transformer> transformers; // -1 no transfer like ms3 transforms msg to next msg
