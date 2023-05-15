@@ -21,18 +21,16 @@ import java.util.Map;
 public class XMessageParser {
 
     public static JAXBContext context;
-    public static Unmarshaller jaxbUnmarshaller;
-
     static {
         try {
             context = JAXBContext.newInstance(XMessage.class);
-            jaxbUnmarshaller = context.createUnmarshaller();
         } catch (JAXBException e) {
             e.printStackTrace();
         }
     }
 
     public static XMessage parse(InputStream stream) throws JAXBException {
+        Unmarshaller jaxbUnmarshaller = context.createUnmarshaller();
         return (XMessage) jaxbUnmarshaller.unmarshal(stream);
     }
 }
