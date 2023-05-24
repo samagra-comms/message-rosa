@@ -16,7 +16,7 @@ public class ResourcePathHelper {
 
     private static synchronized Set<Path> buildCache() {
         try {
-            URI uri = ResourcePathHelper.class.getResource("/testMessage.xml").toURI();
+            URI uri = ResourcePathHelper.class.getResource("/xml/testMessage.xml").toURI();
             Path root = Paths.get(uri).getParent();
             return walk(root)
                     .filter(p -> isRegularFile(p))
