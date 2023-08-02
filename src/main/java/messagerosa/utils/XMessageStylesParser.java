@@ -77,18 +77,31 @@ public class XMessageStylesParser {
     }
 
     private static int seekHigherOrderEndWithoutNewBeginning(CharSequence text, char needle, int start, int end) {
+        int result = -1;
         for (int i = start; i <= end; ++i) {
             char c = text.charAt(i);
-            if (c == needle && precededByWhiteSpace(text, i, start) && !followedByWhitespace(text, i, end)) {
-                return -1; // new beginning
-            } else if (c == needle && !Character.isWhitespace(text.charAt(i - 1)) && followedByWhitespace(text, i, end)) {
-                return i;
-            } else if (c == '\n') {
-                return -1;
+
+            if (c == '\n') {
+                result = -1;
+                break;
+            }
+
+            boolean isNeedleChar = (c == needle);
+            boolean precededByWhitespace = precededByWhitespace(text, i, start);
+            boolean followedByWhitespace = followedByWhitespace(text, i, end);
+
+            if (isNeedleChar && precededByWhitespace && !followedByWhitespace) {
+                result = -1; // New beginning
+                break;
+            } else if (isNeedleChar && !Character.isWhitespace(text.charAt(i - 1)) && followedByWhitespace) {
+                result = i;
+                break;
             }
         }
-        return -1;
+
+        return result;
     }
+
 
     private static int seekEndBlock(CharSequence text, char needle, int start, int end) {
         for (int i = start; i <= end; ++i) {

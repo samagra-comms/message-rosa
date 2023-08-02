@@ -1,8 +1,8 @@
 package messagerosa.core.model;
 
 public enum MessageMediaError {
-    PAYLOAD_TO_LARGE("payloadTooLarge"),
-    EMPTY_RESPONSE("emptyResponse");
+    PAYLOAD_TO_LARGE("pay load Too Large"),
+    EMPTY_RESPONSE("empty Response");
     private String name;
 
     MessageMediaError(String name) {
