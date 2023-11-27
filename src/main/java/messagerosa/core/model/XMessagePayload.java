@@ -2,6 +2,7 @@ package messagerosa.core.model;
 
 import lombok.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 @Getter
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class XMessagePayload {
+public class XMessagePayload implements Serializable {
 	private String text;
 	private MessageMedia media;
 	private LocationParams location;
